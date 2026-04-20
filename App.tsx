@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { TabId, TabConfig } from './types';
 import { TimeUtility } from './components/TimeUtility';
 import { JsonUtility } from './components/JsonUtility';
-import { Clock, Home, Code, Terminal, Zap } from 'lucide-react';
+import { ChunkUtility } from './components/ChunkUtility';
+import { Clock, Home, Code, ScissorsLineDashed, Terminal, Zap } from 'lucide-react';
 
 const TABS: TabConfig[] = [
   { id: TabId.HOME, label: 'Dashboard', icon: <Home className="w-4 h-4" /> },
   { id: TabId.TIME, label: 'Time Utility', icon: <Clock className="w-4 h-4" /> },
   { id: TabId.JSON, label: 'JSON Tools', icon: <Code className="w-4 h-4" /> },
+  { id: TabId.CHUNK, label: 'Text Chunker', icon: <ScissorsLineDashed className="w-4 h-4" /> },
   { id: TabId.UUID, label: 'Generators', icon: <Terminal className="w-4 h-4" /> },
 ];
 
@@ -80,7 +82,7 @@ const App: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-12 text-left">
               <div 
                 className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-900/80 transition-all cursor-pointer"
                 onClick={() => setActiveTab(TabId.TIME)}
@@ -102,12 +104,24 @@ const App: React.FC = () => {
                 <h3 className="text-lg font-bold text-white mb-2">JSON Tools</h3>
                 <p className="text-slate-400 text-sm">Validate, minify, and beautify JSON data instantly.</p>
               </div>
+
+              <div 
+                className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-900/80 transition-all cursor-pointer"
+                onClick={() => setActiveTab(TabId.CHUNK)}
+              >
+                <div className="bg-emerald-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-colors">
+                  <ScissorsLineDashed className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Text Chunker</h3>
+                <p className="text-slate-400 text-sm">Split long paragraph text into copyable chunks with a configurable character limit.</p>
+              </div>
             </div>
           </div>
         )}
 
         {activeTab === TabId.TIME && <TimeUtility />}
         {activeTab === TabId.JSON && <JsonUtility />}
+        {activeTab === TabId.CHUNK && <ChunkUtility />}
         
         {/* Placeholders for other tabs */}
         {activeTab === TabId.UUID && (

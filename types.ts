@@ -2,6 +2,7 @@ export enum TabId {
   HOME = 'HOME',
   TIME = 'TIME',
   JSON = 'JSON', // Placeholder for future expansion
+  CHUNK = 'CHUNK',
   UUID = 'UUID'  // Placeholder for future expansion
 }
 
