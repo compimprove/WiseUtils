@@ -11,7 +11,7 @@ import {
   Trash2
 } from 'lucide-react';
 
-const DEFAULT_MAX_CHARS = 5000;
+const DEFAULT_MAX_CHARS = 4700;
 const PARAGRAPH_SPLIT_RE = /\n\s*\n+/g;
 const LEADING_MARKER_RE = /^\s*\d+\s*[\.\-\)]\s*/;
 const SENTENCE_SPLIT_RE = /(?<=[.!?])(?:\s+|\n+)/u;
